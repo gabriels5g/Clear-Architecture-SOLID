@@ -16,7 +16,7 @@ describe("Sign Controller ", () => {
     expect(httpResponse.body).toEqual(new Error("missing param: name"));
   });
 
-  it("Should return 400 if no name is provided", () => {
+  it("Should return 400 if no email is provided", () => {
     const sut = new SingUpController();
     const httpsRequest = {
       body: {
