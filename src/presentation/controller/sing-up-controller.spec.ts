@@ -1,4 +1,5 @@
 import { SingUpController } from "./sing-up";
+import { MissingParamError } from "../errors/missing-param-error";
 
 describe("Sign Controller ", () => {
   it("Should return 400 if no name is provided", () => {
@@ -11,9 +12,8 @@ describe("Sign Controller ", () => {
       },
     };
     const httpResponse = sut.handle(httpsRequest);
-
     expect(httpResponse.statusCode).toBe(400);
-    expect(httpResponse.body).toEqual(new Error("missing param: name"));
+    expect(httpResponse.body).toEqual(new MissingParamError("name"));
   });
 
   it("Should return 400 if no email is provided", () => {
@@ -28,6 +28,6 @@ describe("Sign Controller ", () => {
     const httpResponse = sut.handle(httpsRequest);
 
     expect(httpResponse.statusCode).toBe(400);
-    expect(httpResponse.body).toEqual(new Error("missing param: email"));
+    expect(httpResponse.body).toEqual(new MissingParamError("email"));
   });
 });
